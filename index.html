@@ -1,1 +1,184 @@
-works
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Guide Access</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ibm: {
+              blue: '#0F62FE',
+              dark: '#001D6C',
+              light: '#D0E2FF',
+              pale: '#EDF5FF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-white via-ibm-pale to-ibm-light text-slate-900">
+  <main class="min-h-screen flex items-center justify-center px-4 py-10">
+    <section class="w-full max-w-5xl">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-ibm-blue text-white shadow-lg mb-4">
+          <span class="text-3xl font-bold">G</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-ibm-dark tracking-tight">
+          Secure Guide Access
+        </h1>
+        <p class="mt-3 text-lg text-slate-700 max-w-2xl mx-auto">
+          Enter the access code to unlock the private guide links and learning resources.
+        </p>
+      </div>
+
+      <div id="accessPanel" class="bg-white border border-blue-100 rounded-3xl shadow-2xl p-6 md:p-10 max-w-xl mx-auto">
+        <div class="mb-6">
+          <h2 class="text-2xl font-bold text-ibm-dark">Access Required</h2>
+          <p class="text-slate-600 mt-2">
+            This page stays locked until the correct code is entered.
+          </p>
+        </div>
+
+        <form id="accessForm" class="space-y-4">
+          <label for="accessCode" class="block text-sm font-semibold text-slate-700">
+            Enter access code
+          </label>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              id="accessCode"
+              type="password"
+              autocomplete="off"
+              placeholder="Enter code here"
+              class="flex-1 rounded-xl border border-slate-300 px-4 py-3 text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-ibm-blue"
+            />
+            <button
+              type="submit"
+              class="rounded-xl bg-ibm-blue hover:bg-ibm-dark text-white font-bold px-6 py-3 transition shadow-md"
+            >
+              Unlock
+            </button>
+          </div>
+          <p id="errorMessage" class="hidden text-sm font-semibold text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+            Incorrect code. Please try again.
+          </p>
+        </form>
+
+        <div class="mt-8 rounded-2xl bg-ibm-pale border border-blue-100 p-4">
+          <h3 class="font-bold text-ibm-dark">Security Note</h3>
+          <p class="text-sm text-slate-700 mt-1">
+            This is a simple front-end demo gate. For real security, protect content on a server with login, sessions, and authorization.
+          </p>
+        </div>
+      </div>
+
+      <div id="guidePanel" class="hidden">
+        <div class="bg-white border border-blue-100 rounded-3xl shadow-2xl p-6 md:p-10">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+            <div>
+              <p class="text-sm uppercase tracking-widest text-ibm-blue font-extrabold">Unlocked</p>
+              <h2 class="text-3xl font-extrabold text-ibm-dark mt-1">Guide Resource Links</h2>
+              <p class="text-slate-600 mt-2">
+                Select a guide below to learn more. These are placeholder links you can replace later.
+              </p>
+            </div>
+            <button
+              id="lockButton"
+              class="rounded-xl border border-ibm-blue text-ibm-blue hover:bg-ibm-blue hover:text-white font-bold px-5 py-3 transition"
+            >
+              Lock Page
+            </button>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <a href="https://example.com/java-guide" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-ibm-pale p-5 hover:shadow-xl hover:-translate-y-1 transition">
+              <div class="w-12 h-12 rounded-xl bg-ibm-blue text-white flex items-center justify-center font-extrabold text-xl mb-4">J</div>
+              <h3 class="text-xl font-bold text-ibm-dark group-hover:text-ibm-blue">Java Guide</h3>
+              <p class="text-slate-600 mt-2 text-sm">Placeholder link for Java basics, Spring Boot, and backend development.</p>
+            </a>
+
+            <a href="https://example.com/spring-boot-guide" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-ibm-pale p-5 hover:shadow-xl hover:-translate-y-1 transition">
+              <div class="w-12 h-12 rounded-xl bg-ibm-blue text-white flex items-center justify-center font-extrabold text-xl mb-4">S</div>
+              <h3 class="text-xl font-bold text-ibm-dark group-hover:text-ibm-blue">Spring Boot Guide</h3>
+              <p class="text-slate-600 mt-2 text-sm">Placeholder link for APIs, controllers, services, and project setup.</p>
+            </a>
+
+            <a href="https://example.com/docker-guide" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-ibm-pale p-5 hover:shadow-xl hover:-translate-y-1 transition">
+              <div class="w-12 h-12 rounded-xl bg-ibm-blue text-white flex items-center justify-center font-extrabold text-xl mb-4">D</div>
+              <h3 class="text-xl font-bold text-ibm-dark group-hover:text-ibm-blue">Docker Guide</h3>
+              <p class="text-slate-600 mt-2 text-sm">Placeholder link for containers, Dockerfiles, and Docker Compose.</p>
+            </a>
+
+            <a href="https://example.com/cloud-guide" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-ibm-pale p-5 hover:shadow-xl hover:-translate-y-1 transition">
+              <div class="w-12 h-12 rounded-xl bg-ibm-blue text-white flex items-center justify-center font-extrabold text-xl mb-4">C</div>
+              <h3 class="text-xl font-bold text-ibm-dark group-hover:text-ibm-blue">Cloud Guide</h3>
+              <p class="text-slate-600 mt-2 text-sm">Placeholder link for AWS, Azure, Kubernetes, and deployment topics.</p>
+            </a>
+
+            <a href="https://example.com/security-guide" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-ibm-pale p-5 hover:shadow-xl hover:-translate-y-1 transition">
+              <div class="w-12 h-12 rounded-xl bg-ibm-blue text-white flex items-center justify-center font-extrabold text-xl mb-4">🔐</div>
+              <h3 class="text-xl font-bold text-ibm-dark group-hover:text-ibm-blue">Security Guide</h3>
+              <p class="text-slate-600 mt-2 text-sm">Placeholder link for authentication, authorization, and secure coding.</p>
+            </a>
+
+            <a href="https://example.com/ai-guide" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-ibm-pale p-5 hover:shadow-xl hover:-translate-y-1 transition">
+              <div class="w-12 h-12 rounded-xl bg-ibm-blue text-white flex items-center justify-center font-extrabold text-xl mb-4">AI</div>
+              <h3 class="text-xl font-bold text-ibm-dark group-hover:text-ibm-blue">AI Guide</h3>
+              <p class="text-slate-600 mt-2 text-sm">Placeholder link for AI tools, small language models, and prompt design.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const CORRECT_CODE = 'javazachelp2026';
+
+    const accessPanel = document.getElementById('accessPanel');
+    const guidePanel = document.getElementById('guidePanel');
+    const accessForm = document.getElementById('accessForm');
+    const accessCode = document.getElementById('accessCode');
+    const errorMessage = document.getElementById('errorMessage');
+    const lockButton = document.getElementById('lockButton');
+
+    function showGuides() {
+      accessPanel.classList.add('hidden');
+      guidePanel.classList.remove('hidden');
+      accessCode.value = '';
+      errorMessage.classList.add('hidden');
+    }
+
+    function lockPage() {
+      guidePanel.classList.add('hidden');
+      accessPanel.classList.remove('hidden');
+      accessCode.value = '';
+      accessCode.focus();
+    }
+
+    accessForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const enteredCode = accessCode.value.trim();
+
+      if (enteredCode === CORRECT_CODE) {
+        showGuides();
+      } else {
+        errorMessage.classList.remove('hidden');
+        accessCode.value = '';
+        accessCode.focus();
+      }
+    });
+
+    lockButton.addEventListener('click', lockPage);
+
+    // Always start locked when the page loads or refreshes.
+    window.addEventListener('load', lockPage);
+  </script>
+</body>
+</html>
